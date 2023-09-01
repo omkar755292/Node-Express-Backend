@@ -17,9 +17,7 @@ const app = express();
 
 //Setting up middleware and routes
 app.use(express.json());
-app.use(cors({
-    origin: "http://64.227.132.137:3001"
-}));
+app.use(cors());
 app.use('/api/blog', blogRouter);
 app.use('/api/project', projectRouter);
 app.use('/api/contact', contactRouter);

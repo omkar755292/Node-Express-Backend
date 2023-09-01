@@ -6,7 +6,7 @@ const blogModel = require('../models/blogModel');
 //@access: Public
 const getBlogs = asyncHandler( async (req, res)=>{
     const getblogs = await blogModel.find();
-    res.json({getblogs, message:"This all blogs available in database"});
+    res.status(200).json(getblogs);
 });
 
 //@desc: Get Blog by id
@@ -18,7 +18,7 @@ const getBlog = asyncHandler( async (req, res)=>{
         res.status(404);
         throw new Error ("The blog is not Found");
     }
-    res.json({getblog, message:`The requisted blog for Id ${req.params.id}` });
+    res.status(200).json(getblog);
 });
 
 //@desc: Create New Blog
@@ -31,7 +31,7 @@ const postBlog = asyncHandler( async (req, res)=>{
         throw new Error("All Fields are Mandatory");
     }
     const createblog = await blogModel.create(req.body);
-    res.json({createblog, message:"The new blog is created"});
+    res.status(201).json(createblog);
 });
 
 //@desc: Update Existing Blog
@@ -44,7 +44,7 @@ const updateBlog = asyncHandler( async (req, res)=>{
     throw new Error ('blog is not found');
    }
    const updateblog = await blogModel.findByIdAndUpdate(req.params.id, req.body,{new: true});
-   res.json({updateblog, message:"This blog updated in database"});
+   res.status(200).json(updateblog);
 });
 
 //@desc: Delete Existing Blog by id
@@ -57,7 +57,7 @@ const deleteBlog = asyncHandler( async(req, res)=>{
         throw new Error ("The blog is not Found");
     }
     const deleteblog = await blogModel.findByIdAndDelete(req.params.id);
-    res.json({deleteblog, message:"This blog is deleted from database"});
+    res.status(200).json(deleteblog);
 });
 
 //@desc: Delete All Blog
@@ -65,7 +65,7 @@ const deleteBlog = asyncHandler( async(req, res)=>{
 //@access: Public
 const deleteBlogs = asyncHandler (async (req, res)=>{
     const deleteblogs = await blogModel.deleteMany();
-    res.json({deleteblogs, message: "All blogs are Deleted"});
+    res.status(200).json(deleteblogs);
 });
 
 module.exports = {getBlogs, getBlog, postBlog, updateBlog, deleteBlog, deleteBlogs}

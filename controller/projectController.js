@@ -6,7 +6,7 @@ const projectModel = require('../models/projectModel');
 //@access: Public
 const getProjects = asyncHandler( async (req, res)=>{
     const getprojects = await projectModel.find();
-    res.json(getprojects);
+    res.status(200).json(getprojects);
 });
 
 //@desc: Get Project by id
@@ -18,7 +18,7 @@ const getProject = asyncHandler( async (req, res)=>{
         res.status(404);
         throw new Error ("The Project is not Found");
     }
-    res.json(getproject);
+    res.status(200).json(getproject);
 });
 
 //@desc: Create New Project
@@ -31,8 +31,7 @@ const postProject = asyncHandler( async (req, res)=>{
         throw new Error("The title and desciption is mandatory");
     }
     const createproject = await projectModel.create(req.body);
-    res.json(createproject);
-    console.log(req.body, "new Project is created");
+    res.status(201).json(createproject);
 });
 
 //@desc: Update Project by id
@@ -45,7 +44,7 @@ const updateProject = asyncHandler(async (req, res)=>{
         throw new Error ("The project is not found");
     }
     const updateproject = await projectModel.findByIdAndUpdate(req.params.id, req.body, {new: true});
-    res.json(updateproject);
+    res.status(200).json(updateproject);
 });
 
 //@desc: Delete Project by id
@@ -58,7 +57,7 @@ const deleteProject = asyncHandler(async (req, res)=>{
         throw new Error ("The project is not found");
     }
     const deleteproject = await projectModel.findByIdAndDelete(req.params.id);
-    res.json(deleteproject);
+    res.status(200).json(deleteproject);
 });
 
 //@desc: Delete all Projects
@@ -66,7 +65,7 @@ const deleteProject = asyncHandler(async (req, res)=>{
 //@access: Public
 const deleteProjects = asyncHandler( async (req, res)=>{
     const deleteprojects = await projectModel.deleteMany();
-    res.json(deleteprojects);
+    res.status(200).json(deleteprojects);
 });
 
 module.exports = {getProjects, getProject, postProject, updateProject, deleteProject, deleteProjects}
