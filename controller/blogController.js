@@ -25,7 +25,7 @@ const getBlog = asyncHandler( async (req, res)=>{
 //@methode: POST /api/blog/
 //@access: Public
 const postBlog = asyncHandler( async (req, res)=>{
-    const{title, content, author} = req.body;
+    const{title, content, author, blogImg} = req.body;
     if (!title || !content || !author) {
         res.status(400);
         throw new Error("All Fields are Mandatory");

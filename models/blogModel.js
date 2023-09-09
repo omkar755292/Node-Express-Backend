@@ -4,6 +4,7 @@ const blogSchema = new mongoose.Schema({
     title: { type: String, require: true, trim: true},
     content: { type: String, require: true, trim: true},
     author: { type: String, require: true, trim: true},
+    blogImg:{type: String}
 },
     { timestamps: true }
 );
