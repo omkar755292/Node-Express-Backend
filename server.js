@@ -9,7 +9,7 @@ const contactRouter = require('./routes/contactRoutes');
 
 env.config() //Configuring Hostname and Port from .env file
 const hostname = process.env.HOSTNAME || 'localhost';
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 5000;
 
 //Connecting to MongoDB and Creating Express app
 DBConnect();
