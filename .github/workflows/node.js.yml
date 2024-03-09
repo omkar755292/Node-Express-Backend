@@ -27,7 +27,6 @@ jobs:
     - run: npm ci
     - run: |
         touch .env
-        echo "${{secrets.PROD_ENV_FILE}}" > .env    
-        pm2 reload nodejs.backend
+        echo "${{secrets.PROD_ENV_FILE}}" > .env
         
     

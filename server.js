@@ -11,8 +11,7 @@ env.config() //Configuring Hostname and Port from .env file
 const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 6000;
 
-//Connecting to MongoDB and Creating Express app
-DBConnect();
+DBConnect(); //Connecting to MongoDB
 const app = express();
 
 //Setting up middleware and routes
@@ -23,7 +22,7 @@ app.use('/api/project', projectRouter);
 app.use('/api/contact', contactRouter);
 app.use(errorHandler);
 
-//Starting a server on port
+//Starting a server
 app.listen(port, (req, res) => {
     console.log(`sever listening on port http://${hostname}:${port}`);
 });
