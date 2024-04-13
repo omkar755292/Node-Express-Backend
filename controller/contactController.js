@@ -3,7 +3,7 @@ const contactModel = require('../models/contactModel');
 
 //@desc: Get all Messages
 //@methode: GET /api/contact/
-//@access: Public
+//@access: Private
 const getContacts = asyncHandler( async (req, res)=>{
     const getcontacts = await contactModel.find();
     res.status(200).json(getcontacts);
@@ -11,7 +11,7 @@ const getContacts = asyncHandler( async (req, res)=>{
 
 //@desc: Get Messages by id
 //@methode: GET /api/contact/ID
-//@access: Public
+//@access: Private
 const getContact = asyncHandler( async (req, res)=>{
     const getcontact = await contactModel.findById(req.params.id);
     if (!getcontact) {
@@ -36,7 +36,7 @@ const postContact = asyncHandler( async (req, res)=>{
 
 //@desc: Upadate existing Message
 //@methode: PUT /api/contact/
-//@access: Public
+//@access: Private
 const upadateContact = asyncHandler (async (req, res)=>{
     const getcontact = await contactModel.findById(req.params.id);
     if (!getcontact) {
@@ -49,7 +49,7 @@ const upadateContact = asyncHandler (async (req, res)=>{
 
 //@desc: Delete existing Message
 //@methode: DELETE /api/contact/
-//@access: Public
+//@access: Private
 const deleteContact = asyncHandler (async (req, res)=>{
     const getcontact = await contactModel.findById(req.params.id);
     if (!getcontact) {
@@ -62,7 +62,7 @@ const deleteContact = asyncHandler (async (req, res)=>{
 
 //@desc: Get all Messages
 //@methode: GET /api/contact/
-//@access: Public
+//@access: Private
 const deleteContacts = asyncHandler( async (req, res)=>{
     const deletecontacts = await contactModel.deleteMany();
     res.status(200).json(deletecontacts);

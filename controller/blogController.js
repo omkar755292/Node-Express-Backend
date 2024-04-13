@@ -23,7 +23,7 @@ const getBlog = asyncHandler( async (req, res)=>{
 
 //@desc: Create New Blog
 //@methode: POST /api/blog/
-//@access: Public
+//@access: Private
 const postBlog = asyncHandler( async (req, res)=>{
     const{title, content, author, blogImg} = req.body;
     if (!title || !content || !author) {
@@ -36,7 +36,7 @@ const postBlog = asyncHandler( async (req, res)=>{
 
 //@desc: Update Existing Blog
 //@methode: PUT /api/blog/ID
-//@access: Public
+//@access: Private
 const updateBlog = asyncHandler( async (req, res)=>{
    const getblog = await blogModel.findById(req.params.id);
    if (!getblog) {
@@ -49,7 +49,7 @@ const updateBlog = asyncHandler( async (req, res)=>{
 
 //@desc: Delete Existing Blog by id
 //@methode: DELETE /api/blog/ID
-//@access: Public
+//@access: Private
 const deleteBlog = asyncHandler( async(req, res)=>{
     const getblog = await blogModel.findById(req.params.id);
     if (!getblog) {
@@ -62,7 +62,7 @@ const deleteBlog = asyncHandler( async(req, res)=>{
 
 //@desc: Delete All Blog
 //@methode: DELETE /api/blog/
-//@access: Public
+//@access: Private
 const deleteBlogs = asyncHandler (async (req, res)=>{
     const deleteblogs = await blogModel.deleteMany();
     res.status(200).json(deleteblogs);

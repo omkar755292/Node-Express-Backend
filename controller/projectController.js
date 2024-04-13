@@ -23,7 +23,7 @@ const getProject = asyncHandler( async (req, res)=>{
 
 //@desc: Create New Project
 //@methode: POST /api/Project/
-//@access: Public
+//@access: Private
 const postProject = asyncHandler( async (req, res)=>{
     const{title, description, projectUrl, imageUrl} = req.body;
     if (!title || !description ) {
@@ -36,7 +36,7 @@ const postProject = asyncHandler( async (req, res)=>{
 
 //@desc: Update Project by id
 //@methode: PUT /api/Project/ID
-//@access: Public
+//@access: Private
 const updateProject = asyncHandler(async (req, res)=>{
     const getproject = await projectModel.findById(req.params.id);
     if (!getproject) {
@@ -49,7 +49,7 @@ const updateProject = asyncHandler(async (req, res)=>{
 
 //@desc: Delete Project by id
 //@methode: DELETE /api/Project/ID
-//@access: Public
+//@access: Private
 const deleteProject = asyncHandler(async (req, res)=>{
     const getproject = await projectModel.findById(req.params.id);
     if (!getproject) {
@@ -62,7 +62,7 @@ const deleteProject = asyncHandler(async (req, res)=>{
 
 //@desc: Delete all Projects
 //@methode: DELETE /api/Project/
-//@access: Public
+//@access: Private
 const deleteProjects = asyncHandler( async (req, res)=>{
     const deleteprojects = await projectModel.deleteMany();
     res.status(200).json(deleteprojects);
