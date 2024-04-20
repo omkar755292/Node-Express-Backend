@@ -2,3 +2,6 @@
 .env
 .txt
 README.pdf
+deploy.sh
+setup.sh
+node-express-backend
