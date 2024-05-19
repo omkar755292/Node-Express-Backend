@@ -27,6 +27,7 @@ const getProject = asyncHandler(async (req, res) => {
 //@access: Private
 const postProject = asyncHandler(async (req, res) => {
     const { title, description, projectUrl, projectImagePath } = req.body;
+    
     console.log(req.body);
     if (!title || !description) {
         res.status(400);
