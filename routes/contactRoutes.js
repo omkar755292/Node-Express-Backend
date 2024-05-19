@@ -4,7 +4,7 @@ const validateToken = require('../middleware/validateToken');
 
 const contactRouter = express.Router();
 
-contactRouter.route('/').get(validateToken, getContacts);
+contactRouter.route('/').get( getContacts);
 contactRouter.route('/').post(postContact);
 contactRouter.route('/:id').get(validateToken, getContact);
 contactRouter.route('/:id').put(validateToken, upadateContact);
