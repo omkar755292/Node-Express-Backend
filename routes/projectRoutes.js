@@ -1,5 +1,5 @@
 const express = require('express');
-const { getProjects, postProject, getProject, updateProject, deleteProject, deleteProjects, uploadProjectImage } = require('../controller/projectController');
+const { getProjects, postProject, getProject, updateProject, deleteProject, deleteProjects } = require('../controller/projectController');
 const validateToken = require('../middleware/validateToken');
 
 const projectRouter = express.Router();

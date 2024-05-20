@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler');
 const projectModel = require('../models/projectModel');
-const upload = require('../config/multer');
 
 //@desc: Get all Project
 //@methode: GET /api/project/
