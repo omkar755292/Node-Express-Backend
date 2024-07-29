@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const userModel = require('../models/userModel');
+const UserModel = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -12,13 +12,13 @@ const Register = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error("All Fields are Mandatory");
     }
-    const userExist = await userModel.findOne({ email });
+    const userExist = await UserModel.findOne({ email });
     if (userExist) {
         res.status(401);
         throw new Error("User already Exist");
     }
     const hashPassword = await bcrypt.hash(password, 10);
-    const user = await userModel.create(
+    const user = await UserModel.create(
         {
             displayName: name,
             email: email,
@@ -37,7 +37,7 @@ const Login = asyncHandler(async (req, res) => {
         res.status(401);
         throw new Error("All Fields are mandatory");
     }
-    const user = await userModel.findOne({ email });
+    const user = await UserModel.findOne({ email });
     if (!user) {
         res.status(404);
         throw new Error("User Not Exist");
